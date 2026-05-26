@@ -86,6 +86,7 @@ const GALLERY_EXTRA = [
   { img: "./images/avia-2.jpg", caption: "Habitación con cama king size en Hotel AVIA Inn" },
   { img: "./images/avia-1-nocar.jpg", caption: "Fachada del Hotel AVIA Inn sobre Vía Morelos, Ecatepec" },
   { img: "./images/avia-4.jpg", caption: "Entrada y acceso a garage privado del Hotel AVIA Inn" },
+  { img: "./images/avia-courtyard.jpg", caption: "Patio interior y acceso a las habitaciones del Hotel AVIA Inn" },
 ];
 
 
