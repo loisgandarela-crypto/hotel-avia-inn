@@ -1,0 +1,382 @@
+/* ============================================================
+   HOTEL AVIA INN — Hoja de estilos
+   Estilo: moderno, minimalista, cálido.
+   Fondo claro, mucho espacio en blanco, líneas finas, un solo
+   acento (vino tenue) que aporta el toque romántico.
+
+   ¿Quieres cambiar los colores? Edita las variables de aquí abajo.
+   ============================================================ */
+:root {
+  --bg:        #ffffff;   /* fondo principal */
+  --bg-soft:   #f6f4ef;   /* fondo cálido alterno (greige) */
+  --bg-dark:   #1a1712;   /* secciones oscuras (carbón cálido) */
+  --ink:       #1f1b16;   /* texto principal (casi negro cálido) */
+  --ink-soft:  #726b62;   /* texto secundario */
+  --line:      #e8e2d8;   /* líneas finas / bordes */
+  --accent:    #b89357;   /* acento champán/dorado discreto */
+  --accent-dk: #9a7842;   /* champán más oscuro (hover) */
+  --accent-sf: #efe6d6;   /* champán muy claro para fondos suaves */
+  --white:     #ffffff;
+  --whatsapp:  #25d366;
+  --whatsapp-dk: #1ebe5b;
+
+  --radius: 4px;          /* esquinas sutiles (look minimalista) */
+  --radius-lg: 8px;
+  --max: 1240px;
+
+  --font-serif: "Fraunces", Georgia, serif;
+  --font-sans:  "Jost", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --shadow: 0 18px 50px rgba(28, 23, 20, .10);
+}
+
+/* ---------- Reset ---------- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; scroll-padding-top: 80px; }
+body {
+  font-family: var(--font-sans);
+  color: var(--ink);
+  background: var(--bg);
+  line-height: 1.65;
+  font-weight: 300;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+
+.container { width: 100%; max-width: var(--max); margin: 0 auto; padding: 0 28px; }
+
+/* ---------- Botones ---------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  font-family: var(--font-sans); font-weight: 400; font-size: .82rem;
+  letter-spacing: .18em; text-transform: uppercase;
+  padding: 15px 30px; border-radius: var(--radius); border: 1px solid transparent;
+  cursor: pointer; transition: all .3s ease; white-space: nowrap;
+}
+.btn-lg { padding: 18px 40px; }
+/* Botón principal: carbón elegante (alto contraste, look premium) */
+.btn-accent { background: var(--ink); color: #fff; }
+.btn-accent:hover { background: #000; }
+.btn-dark { background: var(--ink); color: #fff; }
+.btn-dark:hover { background: #000; }
+.btn-outline { background: transparent; color: var(--ink); border-color: var(--ink); }
+.btn-outline:hover { background: var(--ink); color: #fff; }
+.btn-light { background: #fff; color: var(--ink); }
+.btn-light:hover { background: var(--accent-sf); color: var(--ink); }
+.btn-whatsapp { background: var(--whatsapp); color: #fff; }
+.btn-whatsapp:hover { background: var(--whatsapp-dk); }
+.btn .wa-icon { width: 18px; height: 18px; fill: currentColor; }
+
+/* ---------- Tipografía de secciones ---------- */
+.eyebrow, .hero-eyebrow {
+  font-family: var(--font-sans); text-transform: uppercase;
+  letter-spacing: .34em; font-size: .72rem; font-weight: 400;
+  color: var(--accent); margin-bottom: 20px;
+}
+.section-title {
+  font-family: var(--font-serif); font-weight: 300;
+  font-size: clamp(2rem, 5vw, 3.4rem); line-height: 1.1;
+  color: var(--ink); margin-bottom: 22px; letter-spacing: -.01em;
+}
+.section-lead {
+  max-width: 620px; color: var(--ink-soft);
+  font-size: 1.05rem; font-weight: 300; margin-bottom: 54px;
+}
+.section { padding: clamp(72px, 10vw, 130px) 0; }
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+.site-header {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  background: rgba(26,23,18,.92); backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255,255,255,.08);
+  transition: box-shadow .35s ease;
+}
+.site-header.scrolled { box-shadow: 0 8px 30px rgba(0,0,0,.28); }
+.header-inner { display: flex; align-items: center; justify-content: space-between; padding: 20px 28px; gap: 16px; }
+
+/* Logotipo (imagen del logo real de la marca AVIA) */
+.brand { display: flex; align-items: center; }
+.brand-logo { height: 46px; width: auto; display: block; transition: height .35s ease; }
+.site-header.scrolled .brand-logo { height: 40px; }
+
+.main-nav { display: flex; gap: 34px; }
+.main-nav a {
+  color: var(--white); font-weight: 300; font-size: .82rem;
+  letter-spacing: .14em; text-transform: uppercase; position: relative; padding: 4px 0;
+  transition: color .3s ease;
+}
+.main-nav a::after { content: ""; position: absolute; left: 0; bottom: -3px; width: 0; height: 1px; background: var(--accent); transition: width .3s ease; }
+.main-nav a:hover { color: var(--accent); }
+.main-nav a:hover::after { width: 100%; }
+
+.header-cta { padding: 11px 24px; font-size: .74rem; background: #fff; color: var(--ink); border-color: #fff; }
+.header-cta:hover { background: var(--accent-sf); border-color: var(--accent-sf); }
+
+/* Hamburguesa */
+.nav-toggle { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 6px; }
+.nav-toggle span { width: 26px; height: 1.5px; background: var(--white); transition: .3s; }
+.nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-toggle.open span:nth-child(2) { opacity: 0; }
+.nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+.mobile-nav { display: none; flex-direction: column; background: rgba(26,23,18,.97); backdrop-filter: blur(12px); border-top: 1px solid rgba(255,255,255,.08); max-height: 0; overflow: hidden; transition: max-height .35s ease; }
+.mobile-nav.open { max-height: 440px; }
+.mobile-nav a { color: var(--white); padding: 16px 28px; border-bottom: 1px solid rgba(255,255,255,.08); font-size: .85rem; letter-spacing: .12em; text-transform: uppercase; }
+.mobile-nav a:hover { color: var(--accent); }
+
+/* ============================================================
+   HERO
+   ============================================================ */
+/* Hero dividido: texto a un lado, foto al otro (estilo editorial) */
+.hero { min-height: 100svh; padding-top: 74px; background: var(--bg-soft); }
+.hero-grid { display: grid; grid-template-columns: 1fr 1fr; min-height: calc(100svh - 74px); }
+.hero-text {
+  display: flex; flex-direction: column; justify-content: center;
+  padding: clamp(36px, 6vw, 96px);
+  background: var(--bg-soft);
+}
+/* Para cambiar la foto de la portada, edita esta ruta */
+.hero-image {
+  background: url("./images/avia-room-1.jpg") center center/cover no-repeat;
+  background-color: var(--bg-dark);
+}
+.hero-eyebrow { color: var(--accent); }
+.hero-title {
+  font-family: var(--font-serif); font-weight: 300; color: var(--ink);
+  font-size: clamp(2.6rem, 5vw, 4.4rem); line-height: 1.04; margin-bottom: 22px;
+  letter-spacing: -.01em;
+}
+.hero-subtitle { font-size: clamp(1rem, 1.6vw, 1.18rem); font-weight: 300; color: var(--ink-soft); max-width: 460px; margin: 0 0 38px; }
+.hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+
+/* ============================================================
+   NOSOTROS
+   ============================================================ */
+.nosotros { background: var(--bg); }
+.features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 0; border-top: 1px solid var(--line); }
+.feature-card {
+  padding: 44px 30px; text-align: left; border-bottom: 1px solid var(--line); border-right: 1px solid var(--line);
+  transition: background .35s ease;
+}
+.feature-card:hover { background: var(--bg-soft); }
+.feature-ico { font-size: 1.7rem; margin-bottom: 18px; opacity: .9; }
+.feature-card h3 { font-family: var(--font-serif); font-weight: 400; font-size: 1.35rem; color: var(--ink); margin-bottom: 8px; }
+.feature-card p { color: var(--ink-soft); font-size: .95rem; }
+
+/* ============================================================
+   HABITACIONES
+   ============================================================ */
+.habitaciones { background: var(--bg-soft); }
+.rooms-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(310px, 1fr)); gap: 30px; }
+.room-card {
+  background: var(--white); border-radius: var(--radius-lg); overflow: hidden;
+  display: flex; flex-direction: column; border: 1px solid var(--line);
+  transition: transform .4s ease, box-shadow .4s ease;
+}
+.room-card:hover { transform: translateY(-6px); box-shadow: var(--shadow); }
+.room-media { position: relative; aspect-ratio: 4 / 3; overflow: hidden; background: var(--bg-soft); }
+.room-media img { width: 100%; height: 100%; object-fit: cover; transition: transform .7s ease; }
+.room-card:hover .room-media img { transform: scale(1.06); }
+.room-price {
+  position: absolute; bottom: 14px; left: 14px;
+  background: rgba(255,255,255,.95); color: var(--ink); font-weight: 400;
+  font-size: 1rem; letter-spacing: .02em; padding: 7px 15px; border-radius: var(--radius);
+  backdrop-filter: blur(4px);
+}
+.room-price small { color: var(--ink-soft); font-size: .68rem; letter-spacing: .1em; }
+.room-body { padding: 26px 26px 30px; display: flex; flex-direction: column; flex: 1; }
+.room-name { font-family: var(--font-serif); font-weight: 400; font-size: 1.55rem; color: var(--ink); margin-bottom: 10px; line-height: 1.15; }
+.room-desc { color: var(--ink-soft); font-size: .94rem; margin-bottom: 24px; flex: 1; }
+.room-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.room-actions .btn { flex: 1; padding: 13px 14px; font-size: .72rem; letter-spacing: .14em; }
+
+/* ============================================================
+   AMENIDADES
+   ============================================================ */
+.amenidades { background: var(--bg-dark); color: var(--white); }
+.amenidades .eyebrow { color: var(--accent-sf); }
+.amenidades .section-title { color: var(--white); }
+.amenities-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1px; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.08); }
+.amenity {
+  display: flex; flex-direction: column; align-items: flex-start; gap: 14px;
+  padding: 34px 24px; background: var(--bg-dark); font-weight: 300; font-size: .95rem;
+  color: rgba(255,255,255,.9); transition: background .35s ease;
+}
+.amenity:hover { background: #211915; }
+.amenity-ico { font-size: 1.6rem; }
+
+/* ============================================================
+   GALERÍA
+   ============================================================ */
+.galeria { background: var(--bg); }
+.gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; }
+.gallery-item { position: relative; overflow: hidden; border-radius: var(--radius-lg); aspect-ratio: 4 / 3; cursor: pointer; background: var(--bg-soft); }
+.gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform .7s ease; }
+.gallery-item:hover img { transform: scale(1.08); }
+.gallery-item::after { content: "+"; position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-family: var(--font-serif); font-size: 2.4rem; font-weight: 300; background: rgba(28,23,20,.4); color: #fff; opacity: 0; transition: opacity .35s ease; }
+.gallery-item:hover::after { opacity: 1; }
+
+/* Visor ampliado (lightbox) */
+.lightbox { position: fixed; inset: 0; z-index: 3000; display: none; align-items: center; justify-content: center; padding: 24px; background: rgba(16,12,10,.94); backdrop-filter: blur(4px); }
+.lightbox.open { display: flex; }
+.lightbox img { max-width: 92vw; max-height: 88vh; border-radius: var(--radius-lg); }
+.lightbox-close { position: absolute; top: 24px; right: 28px; font-size: 2rem; color: #fff; background: none; border: none; cursor: pointer; }
+
+/* ============================================================
+   UBICACIÓN
+   ============================================================ */
+.ubicacion { background: var(--bg-soft); }
+.location-highlights { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 18px; margin-bottom: 50px; }
+.loc-hl { background: var(--white); border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 30px 26px; transition: border-color .3s ease, transform .3s ease; }
+.loc-hl:hover { border-color: var(--accent); transform: translateY(-5px); }
+.loc-hl-ico { font-size: 1.8rem; display: block; margin-bottom: 12px; }
+.loc-hl h3 { font-family: var(--font-serif); font-weight: 400; font-size: 1.3rem; color: var(--ink); margin-bottom: 6px; }
+.loc-hl p { color: var(--ink-soft); font-size: .94rem; }
+.location-grid { display: grid; grid-template-columns: 1fr 1.25fr; gap: 50px; align-items: stretch; }
+.location-info h3 { font-family: var(--font-serif); font-weight: 400; font-size: 1.3rem; color: var(--ink); margin: 26px 0 8px; }
+.location-info h3:first-child { margin-top: 0; }
+.location-info p { color: var(--ink-soft); margin-bottom: 8px; font-size: .98rem; }
+.location-info .btn { margin-top: 22px; }
+.location-map { min-height: 400px; border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--line); }
+.location-map iframe { width: 100%; height: 100%; min-height: 400px; display: block; filter: grayscale(.2); }
+
+/* ============================================================
+   CONTACTO
+   ============================================================ */
+.contacto { background: var(--bg); text-align: center; }
+.contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 18px; margin-bottom: 44px; }
+.contact-card { background: var(--white); border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 42px 26px; transition: border-color .3s ease, transform .3s ease; }
+.contact-card:hover { border-color: var(--accent); transform: translateY(-5px); }
+.contact-ico { font-size: 1.8rem; display: block; margin-bottom: 14px; }
+.contact-card h3 { font-family: var(--font-serif); font-weight: 400; font-size: 1.3rem; color: var(--ink); margin-bottom: 6px; }
+.contact-card p { color: var(--ink-soft); font-size: .96rem; }
+
+/* ============================================================
+   PIE DE PÁGINA
+   ============================================================ */
+.site-footer { background: var(--bg-dark); color: rgba(255,255,255,.7); text-align: center; padding: 60px 0 40px; }
+.footer-inner { display: flex; flex-direction: column; gap: 8px; align-items: center; }
+.footer-brand { margin-bottom: 14px; }
+.footer-logo { height: 64px; width: auto; display: inline-block; }
+.site-footer p { font-size: .92rem; }
+.site-footer a { color: var(--accent-sf); }
+.footer-copy { margin-top: 16px; font-size: .8rem; opacity: .6; letter-spacing: .04em; }
+
+/* ============================================================
+   BOTÓN FLOTANTE DE WHATSAPP (derecha)
+   ============================================================ */
+.float-whatsapp {
+  position: fixed; right: 24px; bottom: 24px; z-index: 1500;
+  width: 58px; height: 58px; border-radius: 50%;
+  background: var(--whatsapp); display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 10px 28px rgba(37,211,102,.45); animation: pulse 2.6s infinite;
+}
+.float-whatsapp svg { width: 30px; height: 30px; fill: #fff; }
+.float-whatsapp:hover { background: var(--whatsapp-dk); transform: scale(1.07); transition: transform .25s ease, background .25s ease; }
+@keyframes pulse {
+  0%   { box-shadow: 0 10px 28px rgba(37,211,102,.45), 0 0 0 0 rgba(37,211,102,.5); }
+  70%  { box-shadow: 0 10px 28px rgba(37,211,102,.45), 0 0 0 16px rgba(37,211,102,0); }
+  100% { box-shadow: 0 10px 28px rgba(37,211,102,.45), 0 0 0 0 rgba(37,211,102,0); }
+}
+
+/* ============================================================
+   ASISTENTE VIRTUAL (izquierda)
+   ============================================================ */
+.chat-launcher {
+  position: fixed; left: 24px; bottom: 24px; z-index: 1500;
+  display: flex; align-items: center; gap: 9px;
+  background: var(--ink); color: #fff; border: none;
+  padding: 13px 22px 13px 18px; border-radius: 50px; cursor: pointer;
+  font-family: var(--font-sans); font-weight: 300; font-size: .85rem; letter-spacing: .08em;
+  box-shadow: var(--shadow); transition: transform .25s ease, background .3s ease;
+}
+.chat-launcher:hover { transform: translateY(-3px); background: #000; }
+.chat-launcher-ico { font-size: 1.2rem; }
+.chat-launcher.hidden { display: none; }
+
+.chat-panel {
+  position: fixed; left: 24px; bottom: 24px; z-index: 1600;
+  width: min(380px, calc(100vw - 48px)); height: min(560px, calc(100vh - 48px));
+  background: var(--white); border-radius: var(--radius-lg); overflow: hidden;
+  display: flex; flex-direction: column; box-shadow: var(--shadow); border: 1px solid var(--line);
+  opacity: 0; transform: translateY(20px) scale(.97); pointer-events: none;
+  transition: opacity .3s ease, transform .3s ease;
+}
+.chat-panel.open { opacity: 1; transform: translateY(0) scale(1); pointer-events: auto; }
+
+.chat-header { background: var(--ink); color: #fff; padding: 18px; display: flex; align-items: center; justify-content: space-between; }
+.chat-header-info { display: flex; align-items: center; gap: 12px; }
+.chat-avatar { width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,.08); display: flex; align-items: center; justify-content: center; overflow: hidden; }
+.chat-avatar img { width: 34px; height: auto; }
+.chat-header-info strong { display: block; font-size: .98rem; font-weight: 400; letter-spacing: .04em; }
+.chat-header-info small { color: rgba(255,255,255,.6); font-size: .74rem; }
+.chat-close { background: none; border: none; color: #fff; font-size: 1.1rem; cursor: pointer; padding: 4px 8px; border-radius: var(--radius); }
+.chat-close:hover { background: rgba(255,255,255,.12); }
+
+.chat-body { flex: 1; overflow-y: auto; padding: 18px; display: flex; flex-direction: column; gap: 12px; background: var(--bg-soft); }
+.msg { max-width: 85%; padding: 11px 15px; border-radius: var(--radius-lg); font-size: .92rem; font-weight: 300; line-height: 1.5; animation: msgIn .3s ease; }
+@keyframes msgIn { from { opacity: 0; transform: translateY(8px);} to { opacity: 1; transform: translateY(0);} }
+.msg-bot { align-self: flex-start; background: var(--white); color: var(--ink); border: 1px solid var(--line); border-bottom-left-radius: 2px; }
+.msg-user { align-self: flex-end; background: var(--ink); color: #fff; border-bottom-right-radius: 2px; }
+.msg a { color: var(--whatsapp-dk); font-weight: 400; text-decoration: underline; }
+.msg-user a { color: #fff; }
+
+.typing { display: flex; gap: 4px; align-items: center; }
+.typing span { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); animation: blink 1.2s infinite; }
+.typing span:nth-child(2) { animation-delay: .2s; }
+.typing span:nth-child(3) { animation-delay: .4s; }
+@keyframes blink { 0%,60%,100% { opacity: .25;} 30% { opacity: 1;} }
+
+.msg .chat-wa-btn { display: inline-flex; align-items: center; gap: 8px; margin-top: 10px; background: var(--whatsapp); color: #fff; padding: 9px 16px; border-radius: var(--radius); font-weight: 400; font-size: .8rem; letter-spacing: .04em; text-decoration: none; }
+.msg .chat-wa-btn:hover { background: var(--whatsapp-dk); }
+.msg .chat-wa-btn svg { width: 15px; height: 15px; fill: #fff; }
+
+.chat-quick { display: flex; flex-wrap: wrap; gap: 8px; padding: 12px 14px; border-top: 1px solid var(--line); background: var(--white); }
+.quick-btn { background: var(--bg-soft); border: 1px solid var(--line); color: var(--ink); padding: 8px 14px; border-radius: 50px; font-size: .8rem; font-weight: 300; cursor: pointer; font-family: var(--font-sans); transition: all .2s ease; }
+.quick-btn:hover { background: var(--ink); color: #fff; border-color: var(--ink); }
+
+.chat-input { display: flex; gap: 8px; padding: 12px 14px; border-top: 1px solid var(--line); background: var(--white); }
+.chat-input input { flex: 1; border: 1px solid var(--line); border-radius: 50px; padding: 11px 16px; font-family: var(--font-sans); font-weight: 300; font-size: .9rem; outline: none; }
+.chat-input input:focus { border-color: var(--accent); }
+.chat-input button { background: var(--ink); color: #fff; border: none; width: 42px; border-radius: 50%; font-size: 1rem; cursor: pointer; flex-shrink: 0; transition: background .25s ease; }
+.chat-input button:hover { background: #000; }
+
+/* ============================================================
+   APARICIÓN AL HACER SCROLL
+   ============================================================ */
+.reveal { opacity: 0; transform: translateY(30px); transition: opacity .8s ease, transform .8s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ============================================================
+   RESPONSIVO
+   ============================================================ */
+@media (max-width: 880px) {
+  .main-nav, .header-cta { display: none; }
+  .nav-toggle { display: flex; }
+  .mobile-nav { display: flex; }
+  .location-grid { grid-template-columns: 1fr; gap: 30px; }
+  .feature-card { border-right: none; }
+  /* Hero apilado: foto arriba, texto abajo */
+  .hero { min-height: auto; }
+  .hero-grid { grid-template-columns: 1fr; min-height: 0; }
+  .hero-image { order: -1; min-height: 52vh; }
+  .hero-text { padding: clamp(40px, 8vw, 64px) 24px; }
+}
+
+@media (max-width: 560px) {
+  .container { padding: 0 20px; }
+  .hero-actions { flex-direction: column; align-items: stretch; }
+  .hero-actions .btn { width: 100%; }
+  .chat-launcher-text { display: none; }
+  .chat-launcher { padding: 15px; }
+  .chat-panel { left: 12px; right: 12px; bottom: 12px; width: auto; height: min(72vh, 560px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; scroll-behavior: auto; }
+  .reveal { opacity: 1; transform: none; transition: none; }
+}

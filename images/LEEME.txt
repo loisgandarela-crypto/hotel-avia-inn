@@ -1,0 +1,11 @@
+Coloca aquí tus 7 fotos limpias con estos nombres exactos:
+
+PHOTO-2026-05-01-11-42-06_4_clean.jpg   ->  Sencilla $270
+PHOTO-2026-05-01-11-41-30_6_clean.jpg   ->  Sencilla Superior $390
+PHOTO-2026-05-01-11-41-30_5_clean.jpg   ->  Sencilla Superior Plus $460
+PHOTO-2026-05-01-11-42-06_3_clean.jpg   ->  Doble $480
+PHOTO-2026-05-01-11-42-05_4_clean.jpg   ->  Con Jacuzzi $400
+PHOTO-2026-05-01-11-41-30_4_clean.jpg   ->  Suite con Jacuzzi $590 (y fondo del hero)
+PHOTO-2026-05-01-11-42-05_3_clean.jpg   ->  Pole Dance $350
+
+Si falta alguna, el sitio muestra un recuadro elegante de "Foto proximamente".
